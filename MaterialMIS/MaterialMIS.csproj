@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{E53BE0C9-A737-4921-98D2-6CE6F42DB2E2}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MaterialMIS</RootNamespace>
+    <AssemblyName>MaterialMIS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ApplicationIcon>..\图片资源\www.ico.la_6e90affd961a17c8f497e99c436dd265_128X128.ico</ApplicationIcon>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\Dengyong\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChnCharInfo">
+      <HintPath>ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport">
+      <HintPath>..\..\..\绿色软件\fastreport.net\FastReport.Net\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="kernel32">
+      <HintPath>C:\Windows\System32\kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.Ink, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\SQLite\sqlite-netFx40-binary-bundle-Win32-2010-1.0.101.0\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlphaBlendTextBox.cs" />
+    <Compile Include="Chinese2PY.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="ComboBoxTreeView.cs" />
+    <Compile Include="DDTree.cs" />
+    <Compile Include="DDTree.Designer.cs">
+      <DependentUpon>DDTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAccountBill.cs" />
+    <Compile Include="FormAccountBill.Designer.cs">
+      <DependentUpon>FormAccountBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAccountBillList.cs" />
+    <Compile Include="FormAccountBillList.Designer.cs">
+      <DependentUpon>FormAccountBillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClearData.cs" />
+    <Compile Include="FormClearData.Designer.cs">
+      <DependentUpon>FormClearData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCompany.cs" />
+    <Compile Include="FormCompany.Designer.cs">
+      <DependentUpon>FormCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAccountIN.cs" />
+    <Compile Include="FormAccountIN.Designer.cs">
+      <DependentUpon>FormAccountIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAccountOUT.cs" />
+    <Compile Include="FormAccountOUT.Designer.cs">
+      <DependentUpon>FormAccountOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDataBaseSelect.cs" />
+    <Compile Include="FormDataBaseSelect.Designer.cs" />
+    <Compile Include="FormDataImport.cs" />
+    <Compile Include="FormDataImport.Designer.cs">
+      <DependentUpon>FormDataImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGood.cs" />
+    <Compile Include="FormGood.Designer.cs">
+      <DependentUpon>FormGood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGoodsTypeChange.cs" />
+    <Compile Include="FormGoodsTypeChange.Designer.cs">
+      <DependentUpon>FormGoodsTypeChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGoodType.cs" />
+    <Compile Include="FormGoodType.Designer.cs">
+      <DependentUpon>FormGoodType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGuide.cs" />
+    <Compile Include="FormGuide.Designer.cs">
+      <DependentUpon>FormGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHisJSD.cs" />
+    <Compile Include="FormHisJSD.Designer.cs">
+      <DependentUpon>FormHisJSD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHisLeaseJSD.cs" />
+    <Compile Include="FormHisLeaseJSD.Designer.cs">
+      <DependentUpon>FormHisLeaseJSD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInput.cs" />
+    <Compile Include="FormInput.Designer.cs">
+      <DependentUpon>FormInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInSearch.cs" />
+    <Compile Include="FormInSearch.Designer.cs">
+      <DependentUpon>FormInSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseAccount.cs" />
+    <Compile Include="FormLeaseAccount.Designer.cs">
+      <DependentUpon>FormLeaseAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseAccountList.cs" />
+    <Compile Include="FormLeaseAccountList.Designer.cs">
+      <DependentUpon>FormLeaseAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseHT.cs" />
+    <Compile Include="FormLeaseHT.Designer.cs">
+      <DependentUpon>FormLeaseHT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseItem.cs" />
+    <Compile Include="FormLeaseItem.Designer.cs">
+      <DependentUpon>FormLeaseItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseOption.cs" />
+    <Compile Include="FormLeaseOption.Designer.cs">
+      <DependentUpon>FormLeaseOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseRecord.cs" />
+    <Compile Include="FormLeaseRecord.Designer.cs">
+      <DependentUpon>FormLeaseRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLeaseRecord1.cs" />
+    <Compile Include="FormLeaseRecord1.Designer.cs">
+      <DependentUpon>FormLeaseRecord1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMaterialConfirm.cs">
+      <DependentUpon>FormMoneyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMaterialConfirm.Designer.cs">
+      <DependentUpon>FormMaterialConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMoneyType.cs" />
+    <Compile Include="FormMoneyType.Designer.cs">
+      <DependentUpon>FormMoneyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOptions.cs" />
+    <Compile Include="FormOptions.Designer.cs">
+      <DependentUpon>FormOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOutBill.cs" />
+    <Compile Include="FormOutBill.Designer.cs">
+      <DependentUpon>FormOutBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOutBillList.cs" />
+    <Compile Include="FormOutBillList.Designer.cs">
+      <DependentUpon>FormOutBillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPriceList.cs" />
+    <Compile Include="FormPriceList.Designer.cs">
+      <DependentUpon>FormPriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProgOption.cs" />
+    <Compile Include="FormProgOption.Designer.cs">
+      <DependentUpon>FormProgOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProject.cs" />
+    <Compile Include="FormProject.Designer.cs">
+      <DependentUpon>FormProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReceiptBill.cs" />
+    <Compile Include="FormReceiptBill.Designer.cs">
+      <DependentUpon>FormReceiptBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReceiptBillList.cs" />
+    <Compile Include="FormReceiptBillList.Designer.cs">
+      <DependentUpon>FormReceiptBillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRecord.cs" />
+    <Compile Include="FormRecord.Designer.cs">
+      <DependentUpon>FormRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRecordList.cs" />
+    <Compile Include="FormRecordList.Designer.cs">
+      <DependentUpon>FormRecordList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelectGood.cs" />
+    <Compile Include="FormSelectGood.Designer.cs">
+      <DependentUpon>FormSelectGood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatementMain.cs" />
+    <Compile Include="FormStatementMain.Designer.cs">
+      <DependentUpon>FormStatementMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStock.cs" />
+    <Compile Include="FormStock.Designer.cs">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStock1.cs" />
+    <Compile Include="FormStock1.Designer.cs">
+      <DependentUpon>FormStock1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSupplier.cs" />
+    <Compile Include="FormSupplier.Designer.cs">
+      <DependentUpon>FormSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSupplierDetail.cs" />
+    <Compile Include="FormSupplierDetail.Designer.cs">
+      <DependentUpon>FormSupplierDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTemp.cs" />
+    <Compile Include="FormTemp.Designer.cs">
+      <DependentUpon>FormTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUser.cs" />
+    <Compile Include="FormUser.Designer.cs">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWareHouse.cs" />
+    <Compile Include="FormWareHouse.Designer.cs">
+      <DependentUpon>FormWareHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PageDataGridView.cs" />
+    <Compile Include="PageDataGridView.Designer.cs">
+      <DependentUpon>PageDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Segmentation.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <DependentUpon>Resource1.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="TabControlEx.cs" />
+    <Compile Include="TabControlWithClose.cs" />
+    <Compile Include="WaterTextBox.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormClearData.resx">
+      <DependentUpon>FormClearData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDataBaseSelect.resx">
+      <DependentUpon>FormDataBaseSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDataImport.resx">
+      <DependentUpon>FormDataImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGood.resx">
+      <DependentUpon>FormGood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGoodsTypeChange.resx">
+      <DependentUpon>FormGoodsTypeChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHisJSD.resx">
+      <DependentUpon>FormHisJSD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHisLeaseJSD.resx">
+      <DependentUpon>FormHisLeaseJSD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInSearch.resx">
+      <DependentUpon>FormInSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseAccount.resx">
+      <DependentUpon>FormLeaseAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseAccountList.resx">
+      <DependentUpon>FormLeaseAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseHT.resx">
+      <DependentUpon>FormLeaseHT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseItem.resx">
+      <DependentUpon>FormLeaseItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseOption.resx">
+      <DependentUpon>FormLeaseOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseRecord.resx">
+      <DependentUpon>FormLeaseRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLeaseRecord1.resx">
+      <DependentUpon>FormLeaseRecord1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMaterialConfirm.resx">
+      <DependentUpon>FormMaterialConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPriceList.resx">
+      <DependentUpon>FormPriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRecord.resx">
+      <DependentUpon>FormRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRecordList.resx">
+      <DependentUpon>FormRecordList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectGood.resx">
+      <DependentUpon>FormSelectGood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatementMain.resx">
+      <DependentUpon>FormStatementMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStock1.resx">
+      <DependentUpon>FormStock1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSupplier.resx">
+      <DependentUpon>FormSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSupplierDetail.resx">
+      <DependentUpon>FormSupplierDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUser.resx">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageDataGridView.resx">
+      <DependentUpon>PageDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Reports\AccountList.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Reports\CKD.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Reports\GoodsList.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\GoodsList1.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\IncomeSum.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\JSD.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\JSD1.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\LeaseHisJS.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\LeaseJS.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Reports\RKD.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Reports\PriceLimit.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\Stock.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\test1.frx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DDTree.resx">
+      <DependentUpon>DDTree.cs</DependentUpon>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAccountBill.resx">
+      <DependentUpon>FormAccountBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAccountBillList.resx">
+      <DependentUpon>FormAccountBillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAccountIN.resx">
+      <DependentUpon>FormAccountIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAccountOUT.resx">
+      <DependentUpon>FormAccountOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompany.resx">
+      <DependentUpon>FormCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGoodType.resx">
+      <DependentUpon>FormGoodType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGuide.resx">
+      <DependentUpon>FormGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInput.resx">
+      <DependentUpon>FormInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMoneyType.resx">
+      <DependentUpon>FormMoneyType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOptions.resx">
+      <DependentUpon>FormOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOutBill.resx">
+      <DependentUpon>FormOutBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOutBillList.resx">
+      <DependentUpon>FormOutBillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProgOption.resx">
+      <DependentUpon>FormProgOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProject.resx">
+      <DependentUpon>FormProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReceiptBill.resx">
+      <DependentUpon>FormReceiptBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReceiptBillList.resx">
+      <DependentUpon>FormReceiptBillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStock.resx">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTemp.resx">
+      <DependentUpon>FormTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWareHouse.resx">
+      <DependentUpon>FormWareHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{B33F9163-4EBA-41CD-8F32-95CE515C15E6}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+      <Project>{B1FBEAC3-A0F4-4662-9EB7-4633E26F117E}</Project>
+      <Name>DomainModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

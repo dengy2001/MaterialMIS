@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="LeaseAccount" table="LeaseAccount">
+		<id name="BillID" column="BillID" >
+			<generator class="increment" />
+		</id>
+		<property name="CalMethod" column="CalMethod" />
+		<property name="ProjectID" column="ProjectID"/>
+		<property name="ProjectName" column="ProjectName"/>
+		<property name="CompanyID" column="CompanyID"/>
+		<property name="CompanyName" column="CompanyName"/>
+		<property name="BillAmt" column="BillAmt"/>
+		<property name="IncludeSDate" column="IncludeSDate"/>
+		<property name="IncludeEDate" column="IncludeEDate"/>
+		<property name="SDate" column="SDate"/>
+		<property name="EDate" column="EDate"/>
+		<property name="BillCycle" column="BillCycle"/>
+		<property name="Abstract" column="Abstract"/>
+		
+	
+	</class>
+</hibernate-mapping>

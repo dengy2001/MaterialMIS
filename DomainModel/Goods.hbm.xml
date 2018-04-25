@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="Goods" table="Goods">
+		<id name="GoodsID" column="GoodsID" >
+			<generator class="increment" />
+		</id>
+		<property name="GoodsName" column="GoodsName" length="100"  />
+		<property name="GoodsNamePY" column="GoodsNamePY" length="100"  />
+		<property name="GoodsTypeID" column="GoodsTypeID"  />
+		<many-to-one name="GoodsTypeInfo" column="GoodsTypeID" class="GoodsType" update="false" insert="false" lazy = "false" cascade="none"/>
+		<property name="GoodsUnit" column="GoodsUnit" length="10"  />
+		<property name="GoodsSpec" column="GoodsSpec" length="100"  />
+		<property name="GoodsPrice" column="GoodsPrice"/>
+		<property name="GoodsPic" column="GoodsPic" type="binary" />
+		<property name="LimitLow" column="LimitLow"/>
+		<property name="LimitUP" column="LimitUP"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/08/2016 21:16:40" ReportInfo.Modified="09/25/2016 18:22:25" ReportInfo.CreatorVersion="2013.2.5.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {
+      // get the data source by its name
+      DataSourceBase rowData = Report.GetDataSource(&quot;Goods&quot;);
+      // initialize it
+      rowData.Init();
+      
+      Table1.PrintRow(0);
+      Table1.PrintColumns();
+      Table1.PrintRow(1);
+      Table1.PrintColumns();
+      while (rowData.HasMoreRows)
+      {
+        // printing the table row
+        Table1.PrintRow(2);
+        Table1.PrintColumns();
+        // select the next data row
+        rowData.Next();
+      } 
+      // printing the table footer
+        Table1.PrintRow(3);
+        Table1.PrintColumns();
+
+    }
+    
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="Goods" ReferenceName="Data.Goods" DataType="System.Int32" Enabled="true">
+      <Column Name="GoodsID" DataType="System.Int32"/>
+      <Column Name="GoodsName" DataType="System.String"/>
+      <Column Name="GoodsNamePY" DataType="System.String"/>
+      <Column Name="GoodsTypeID" DataType="System.Int32"/>
+      <Column Name="GoodsTypeName" DataType="System.String"/>
+      <Column Name="GoodsUnit" DataType="System.String"/>
+      <Column Name="GoodsSpec" DataType="System.String"/>
+      <Column Name="LastQty" DataType="System.Decimal"/>
+      <Column Name="LastPrc" DataType="System.Decimal"/>
+      <Column Name="LastAmt" DataType="System.Decimal"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <DataBand Name="Data1" Width="718.2" Height="162.54">
+      <TableObject Name="Table1" Width="718.2" Height="162.54" FixedRows="1" ManualBuildEvent="Table1_ManualBuild">
+        <TableColumn Name="Column1" Width="118.8"/>
+        <TableColumn Name="Column2" Width="99.9"/>
+        <TableColumn Name="Column3" Width="90.45"/>
+        <TableColumn Name="Column4" Width="128.25"/>
+        <TableColumn Name="Column5" Width="90.45"/>
+        <TableColumn Name="Column6" Width="99.9"/>
+        <TableColumn Name="Column7" Width="90.45"/>
+        <TableRow Name="Row4" Height="56.7">
+          <TableCell Name="Cell22" Text="货品库存表" HorzAlign="Center" VertAlign="Center" Font="微软雅黑, 18pt" ColSpan="7"/>
+          <TableCell Name="Cell23" Font="宋体, 9pt"/>
+          <TableCell Name="Cell24" Font="宋体, 9pt"/>
+          <TableCell Name="Cell25" Font="宋体, 9pt"/>
+          <TableCell Name="Cell26" Font="宋体, 9pt"/>
+          <TableCell Name="Cell27" Font="宋体, 9pt"/>
+          <TableCell Name="Cell28" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row1" Height="39.69">
+          <TableCell Name="Cell1" Border.Lines="All" Text="货品名称" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="货品类别" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell3" Border.Lines="All" Text="货品单位" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="附加规格" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="单价" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell6" Border.Lines="All" Text="库存低限" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="库存高限" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="37.8">
+          <TableCell Name="Cell8" Border.Lines="All" Text="[Goods.GoodsName]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="[Goods.GoodsTypeName]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell10" Border.Lines="All" Text="[Goods.GoodsUnit]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell11" Border.Lines="All" Text="[Goods.GoodsSpec]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell12" Border.Lines="All" Text="[Goods.GoodsPrice]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell13" Border.Lines="All" Text="[Goods.LimitLow]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell14" Border.Lines="All" Text="[Goods.LimitUP]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row3" Height="28.35">
+          <TableCell Name="Cell15" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell16" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell17" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell18" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell19" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell20" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell21" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="166.54" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

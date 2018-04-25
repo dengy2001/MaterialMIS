@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="ImportRecord" table="ImportRecord">
+		<id name="ID" column="ID" >
+			<generator class="increment" />
+		</id>
+		<property name="PurchDateTime" column="PurchDateTime" />
+		<property name="MName" column="MName"/>
+		<property name="MSpec" column="MSpec"/>
+		<property name="Unit" column="Unit"/>
+		<property name="Number" column="Number"/>
+		<property name="Price" column="Price"/>
+		<property name="SubAmount" column="SubAmount"/>
+		<property name="DCost" column="DCost"/>
+		<property name="Amount" column="Amount"/>
+		<property name="UseSite" column="UseSite"/>
+		<property name="Planner" column="Planner"/>
+		<property name="PlanNo" column="PlanNo"/>
+		<property name="PurchMan" column="PurchMan"/>
+		<property name="Consignee" column="Consignee"/>
+		<property name="ReceiptNo" column="ReceiptNo"/>
+		<property name="Abstract" column="Abstract"/>
+		<property name="SupplierName" column="SupplierName"/>
+		<property name="ProjectName" column="ProjectName"/>
+		<property name="ImportDateTime" column="ImportDateTime"/>	
+				
+	</class>
+</hibernate-mapping>

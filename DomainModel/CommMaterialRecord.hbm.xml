@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="CommMaterialRecord" table="CommMaterialRecord">
+		<id name="CommRecordID" column="CommRecordID" >
+			<generator class="increment" />
+		</id>
+		<property name="ProjectID" column="ProjectID" />
+		<property name="CompanyID" column="CompanyID"/>
+		<property name="PurchaseDate" column="PurchaseDate"/>
+		<property name="MaterialName" column="MaterialName"/>
+		<property name="MaterialSpec" column="MaterialSpec"/>
+		<property name="MaterialUnit" column="MaterialUnit"/>
+		<property name="MaterialNumber" column="MaterialNumber"/>
+		<property name="MaterialPrice" column="MaterialPrice"/>		
+		<property name="MaterialShipment" column="MaterialShipment"/>	
+		<property name="MaterialAmt" column="MaterialAmt"/>	
+		<property name="ForUsePosition" column="ForUsePosition"/>	
+		<property name="MaterialPlan" column="MaterialPlan"/>	
+		<property name="MaterialPlanNo" column="MaterialPlanNo"/>	
+		<property name="PurchName" column="PurchName"/>	
+		<property name="ReceiverName" column="ReceiverName"/>	
+		<property name="ReceiveNo" column="ReceiveNo"/>	
+		<property name="Brief" column="Brief"/>	
+		<property name="BillCycle" column="BillCycle"/>	
+		<property name="RecordState" column="RecordState"/>	
+
+				
+	</class>
+</hibernate-mapping>

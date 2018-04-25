@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" StartReportEvent="_StartReport" ReportInfo.Created="06/07/2016 13:20:17" ReportInfo.Modified="06/10/2016 11:51:08" ReportInfo.CreatorVersion="2013.2.5.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    private decimal YSYE;
+
+    private void Data1_BeforePrint(object sender, EventArgs e)
+    {
+      String tLT = Report.GetParameter(&quot;ListType&quot;).Value.ToString();
+      if(tLT == &quot;0&quot;)
+      {
+        YSYE += ((Decimal)(Report.GetColumnValue(&quot;AccountBill.BillYS&quot;)) - (Decimal)(Report.GetColumnValue(&quot;AccountBill.BillSS&quot;)));
+      }
+      else
+      {        
+        YSYE += ((Decimal)(Report.GetColumnValue(&quot;AccountBill.BillYF&quot;)) - (Decimal)(Report.GetColumnValue(&quot;AccountBill.BillSF&quot;)));
+      }
+    }
+
+    private void GroupHeader1_AfterData(object sender, EventArgs e)
+    {
+      YSYE = 0;
+    }
+  
+
+    private void _StartReport(object sender, EventArgs e)
+    {
+      //获取参数以改变报表的显示
+      String tLT = Report.GetParameter(&quot;ListType&quot;).Value.ToString();
+      if(tLT == &quot;0&quot;)
+      {
+        //Text16.Text = &quot;应收款列表&quot;; 
+        //Text8.Text = &quot;应收款&quot;;
+        //Text10.Text = &quot;实收款&quot;;
+       // Text15.Text = &quot;应收余额&quot;;
+        //Text7.Text  = &quot;[AccountBill.BillYS]&quot;;
+        //Text9.Text  = &quot;[AccountBill.BillSS]&quot;;
+      }
+      else
+      {         
+        Text16.Text = &quot;应付款列表&quot;;
+        Text8.Text = &quot;应付款&quot;;
+        Text10.Text = &quot;实付款&quot;;
+        Text15.Text = &quot;应付余额&quot;;
+        Text7.Text  = &quot;[AccountBill.BillYF]&quot;;
+        Text9.Text  = &quot;[AccountBill.BillSF]&quot;;
+      }
+    }
+
+    private void GroupHeader1_BeforeLayout(object sender, EventArgs e)
+    {
+      YSYE =   (Decimal)(Report.GetColumnValue(&quot;AccountBill.InitAmt&quot;));
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="AccountBill" ReferenceName="Data.AccountBill" DataType="System.Int32" Enabled="true">
+      <Column Name="BillNo" DataType="System.Int32"/>
+      <Column Name="ProjectID" DataType="System.Int32"/>
+      <Column Name="CompanyID" DataType="System.Int32"/>
+      <Column Name="MoneyTypeID" DataType="System.Int32"/>
+      <Column Name="BillType" DataType="System.Int32"/>
+      <Column Name="BillMemo" DataType="System.String"/>
+      <Column Name="BillYS" DataType="System.Decimal"/>
+      <Column Name="BillSS" DataType="System.Decimal"/>
+      <Column Name="BillYF" DataType="System.Decimal"/>
+      <Column Name="BillSF" DataType="System.Decimal"/>
+      <Column Name="BillDate" DataType="System.DateTime"/>
+    </TableDataSource>
+    <Parameter Name="ListType" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" FinishPageEvent="ying">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="56.7">
+      <TextObject Name="Text16" Left="226.8" Top="9.45" Width="179.55" Height="37.8" BeforePrintEvent="Text16_BeforePrint" Text="应收款列表" HorzAlign="Center" Font="微软雅黑, 18pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="60.7" Width="718.2" Height="47.25">
+      <TextObject Name="Text2" Left="37.8" Width="47.25" Height="18.9" Text="单号" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text4" Left="85.05" Width="94.5" Height="18.9" Text="业务日期" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text6" Left="179.55" Width="94.5" Height="18.9" Text="业务摘要" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text8" Left="444.15" Width="94.5" Height="18.9" Text="应收款" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text10" Left="538.65" Width="94.5" Height="18.9" Text="实收款" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <LineObject Name="Line2" Top="28.35" Width="708.75"/>
+      <TextObject Name="Text15" Left="633.15" Width="75.6" Height="18.9" Text="应收余额" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageHeaderBand>
+    <GroupHeaderBand Name="GroupHeader1" Top="111.95" Width="718.2" Height="37.8" Fill.Color="SteelBlue" AfterDataEvent="GroupHeader1_AfterData" Guides="47.25" BeforeLayoutEvent="GroupHeader1_BeforeLayout" Condition="[AccountBill.CompanyID]">
+      <TextObject Name="Text13" Left="94.5" Top="9.45" Width="283.5" Height="18.9" Text="[AccountBill.CompanyName]" VertAlign="Center" Font="微软雅黑, 10pt"/>
+      <TextObject Name="Text14" Top="9.45" Width="94.5" Height="18.9" Text="相关名称：" VertAlign="Center" Font="微软雅黑, 10pt"/>
+      <TextObject Name="Text17" Left="444.15" Top="9.45" Width="94.5" Height="18.9" Text="期初余额" HorzAlign="Center" VertAlign="Center" Font="微软雅黑, 10pt"/>
+      <TextObject Name="Text18" Left="538.65" Top="9.45" Width="160.65" Height="18.9" Text="[AccountBill.InitAmt]" HorzAlign="Right" VertAlign="Center" Font="微软雅黑, 10pt"/>
+      <DataBand Name="Data1" Top="153.75" Width="718.2" Height="37.8" BeforePrintEvent="Data1_BeforePrint" DataSource="AccountBill">
+        <TextObject Name="Text1" Left="37.8" Width="47.25" Height="18.9" Text="[AccountBill.BillNo]" VertAlign="Center" Font="宋体, 9pt"/>
+        <TextObject Name="Text3" Left="85.05" Width="94.5" Height="18.9" Text="[AccountBill.BillDate]" Format="Date" Format.Format="d" VertAlign="Center" Font="宋体, 9pt"/>
+        <TextObject Name="Text5" Left="179.55" Width="264.6" Height="18.9" Text="[AccountBill.BillMemo]" VertAlign="Center" Font="宋体, 9pt"/>
+        <TextObject Name="Text7" Left="444.15" Width="94.5" Height="18.9" Text="[AccountBill.BillYS]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="2" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 9pt" Trimming="EllipsisCharacter" Style="0.00"/>
+        <TextObject Name="Text9" Left="538.65" Width="94.5" Height="18.9" Text="[AccountBill.BillSS]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="2" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 9pt" Trimming="EllipsisCharacter"/>
+        <TextObject Name="Text11" Width="37.8" Height="18.9" Text="[Row#]" VertAlign="Center" Font="宋体, 9pt"/>
+        <TextObject Name="Text12" Left="633.15" Width="66.15" Height="18.9" Text="[YSYE]" HorzAlign="Right" VertAlign="Center" Font="宋体, 9pt"/>
+        <LineObject Name="Line1" Top="28.35" Width="708.75"/>
+        <Sort>
+          <Sort Expression="[AccountBill.BillDate]"/>
+        </Sort>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="195.55" Width="718.2" Height="37.8"/>
+    </GroupHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="237.35" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

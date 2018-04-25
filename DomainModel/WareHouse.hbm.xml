@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="WareHouse" table="WareHouses">
+		<id name="WareHouseID" column="WareHouseID" >
+			<generator class="increment" />
+		</id>
+		<property name="WareHouseName" column="WareHouseName" />
+	</class>
+</hibernate-mapping>

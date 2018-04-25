@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="OutStockItems" table="OutStockItems">
+		<id name="ItemsID" column="ItemsID" >
+			<generator class="increment" />
+		</id>
+		<property name="OutStockID" column="OutStockID" />
+		<property name="GoodsID" column="GoodsID"/>
+		<property name="GoodsName" column="GoodsName"/>
+		<property name="GoodsSpec" column="GoodsSpec"/>
+		<property name="GoodsUnit" column="GoodsUnit"/>
+		<property name="GoodsQty" column="GoodsQty"/>
+		<property name="GoodsPrc" column="GoodsPrc"/>
+		<property name="GoodsAmt" column="GoodsAmt"/>
+		<property name="UsePosition" column="UsePosition"/>
+	</class>
+</hibernate-mapping>

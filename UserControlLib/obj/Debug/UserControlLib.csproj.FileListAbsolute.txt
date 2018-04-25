@@ -1,0 +1,5 @@
+E:\程序\MaterialMIS\UserControlLib\bin\Debug\UserControlLib.dll
+E:\程序\MaterialMIS\UserControlLib\bin\Debug\UserControlLib.pdb
+E:\程序\MaterialMIS\UserControlLib\obj\Debug\UserControlLib.csprojResolveAssemblyReference.cache
+E:\程序\MaterialMIS\UserControlLib\obj\Debug\UserControlLib.dll
+E:\程序\MaterialMIS\UserControlLib\obj\Debug\UserControlLib.pdb

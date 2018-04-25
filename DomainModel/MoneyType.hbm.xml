@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="MoneyType" table="MoneyType">
+		<id name="MoneyTypeID" column="MoneyTypeID" >
+			<generator class="increment" />
+		</id>
+		<property name="MoneyTypeName" column="MoneyTypeName" />
+		<property name="MoneyTypeClass" column="MoneyTypeClass"/>
+	</class>
+</hibernate-mapping>

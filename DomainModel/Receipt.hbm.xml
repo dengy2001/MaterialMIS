@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="Receipt" table="Receipt">
+		<id name="ReceiptID" column="ReceiptID" >
+			<generator class="increment" />
+		</id>
+		<property name="ReceiptDate" column="ReceiptDate" />
+		<property name="ReceiptNum" column="ReceiptNum"/>
+		<property name="ReceiptType" column="ReceiptType"/>
+		<property name="ReceiptBillAmt" column="ReceiptBillAmt"/>
+		<property name="ReceiptDiscAmt" column="ReceiptDiscAmt"/>
+		<property name="ReceiptDisc" column="ReceiptDisc"/>
+		<property name="Remark" column="Remark"/>
+		<property name="CompanyID" column="CompanyID"/>
+		<property name="WareHouseID" column="WareHouseID"/>
+		<property name="ProjectID" column="ProjectID"/>
+		<property name="PurchName" column="PurchName"/>
+		<property name="ReceiverName" column="ReceiverName"/>
+		<property name="BillCycle" column="BillCycle"/>
+		<property name="RecordStatus" column="RecordStatus"/>
+	
+	</class>
+</hibernate-mapping>

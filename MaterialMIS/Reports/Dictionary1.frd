@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="AccountBill" ReferenceName="Data.AccountBill" DataType="System.Int32" Enabled="true">
+    <Column Name="BillNo" DataType="System.Int32"/>
+    <Column Name="ProjectID" DataType="System.Int32"/>
+    <Column Name="ProjectName" DataType="System.String"/>
+    <Column Name="CompanyID" DataType="System.Int32"/>
+    <Column Name="CompanyName" DataType="System.String"/>
+    <Column Name="MoneyTypeID" DataType="System.Int32"/>
+    <Column Name="MoneyTypeName" DataType="System.String"/>
+    <Column Name="BillType" DataType="System.Int32"/>
+    <Column Name="BillMemo" DataType="System.String"/>
+    <Column Name="BillYS" DataType="System.Decimal"/>
+    <Column Name="BillSS" DataType="System.Decimal"/>
+    <Column Name="BillYF" DataType="System.Decimal"/>
+    <Column Name="BillSF" DataType="System.Decimal"/>
+    <Column Name="BillDate" DataType="System.DateTime"/>
+    <Column Name="BillCycle" DataType="System.String"/>
+    <Column Name="BillStatus" DataType="System.String"/>
+  </TableDataSource>
+  <TableDataSource Name="GoodsType" ReferenceName="Data.GoodsType" DataType="System.Int32" Enabled="true">
+    <Column Name="GoodsTypeID" DataType="System.Int32"/>
+    <Column Name="GoodsTypeName" DataType="System.String"/>
+    <Column Name="GoodsTypePID" DataType="System.Int32"/>
+  </TableDataSource>
+  <TableDataSource Name="Goods" ReferenceName="Data.Goods" DataType="System.Int32" Enabled="true">
+    <Column Name="GoodsID" DataType="System.Int32"/>
+    <Column Name="GoodsName" DataType="System.String"/>
+    <Column Name="GoodsNamePY" DataType="System.String"/>
+    <Column Name="GoodsTypeID" DataType="System.Int32"/>
+    <Column Name="GoodsTypeName" DataType="System.String"/>
+    <Column Name="GoodsUnit" DataType="System.String"/>
+    <Column Name="GoodsSpec" DataType="System.String"/>
+    <Column Name="GoodsPrice" DataType="System.Decimal"/>
+    <Column Name="LimitLow" DataType="System.Decimal"/>
+    <Column Name="LimitUp" DataType="System.Decimal"/>
+  </TableDataSource>
+  <TableDataSource Name="Companies" ReferenceName="Data.Companies" DataType="System.Int32" Enabled="true">
+    <Column Name="CompanyID" DataType="System.Int32"/>
+    <Column Name="CompanyName" DataType="System.String"/>
+    <Column Name="CompanyNamePY" DataType="System.String"/>
+    <Column Name="CompanyType" DataType="System.Int32"/>
+    <Column Name="LinkDetail" DataType="System.String"/>
+    <Column Name="Remark" DataType="System.String"/>
+    <Column Name="IsSys" DataType="System.Int32"/>
+    <Column Name="IsStop" DataType="System.Int32"/>
+    <Column Name="CompanySKName" DataType="System.String"/>
+    <Column Name="CompanySKBank" DataType="System.String"/>
+    <Column Name="CompanySKAccount" DataType="System.String"/>
+  </TableDataSource>
+  <TableDataSource Name="OutStock" ReferenceName="Data.OutStock" DataType="System.Int32" Enabled="true">
+    <Column Name="OutStockID" DataType="System.Int32"/>
+    <Column Name="OutStockDate" DataType="System.DateTime"/>
+    <Column Name="OutStockType" DataType="System.Int32"/>
+    <Column Name="OutBillAmt" DataType="System.Decimal"/>
+    <Column Name="OutBillRemark" DataType="System.String"/>
+    <Column Name="ProjectID" DataType="System.Int32"/>
+    <Column Name="CompanyID" DataType="System.Int32"/>
+    <Column Name="WareHouseID" DataType="System.Int32"/>
+    <Column Name="BillCycle" DataType="System.String"/>
+    <Column Name="RecordStatus" DataType="System.String"/>
+    <Column Name="OutMan" DataType="System.String"/>
+    <Column Name="UseMan" DataType="System.String"/>
+  </TableDataSource>
+  <TableDataSource Name="OutStockItems" ReferenceName="Data.OutStockItems" DataType="System.Int32" Enabled="true">
+    <Column Name="ItemsID" DataType="System.Int32"/>
+    <Column Name="OutStockID" DataType="System.Int32"/>
+    <Column Name="GoodsID" DataType="System.Int32"/>
+    <Column Name="GoodsName" DataType="System.String"/>
+    <Column Name="GoodsSpec" DataType="System.String"/>
+    <Column Name="GoodsUnit" DataType="System.String"/>
+    <Column Name="GoodsQty" DataType="System.Decimal"/>
+    <Column Name="GoodsPrc" DataType="System.Decimal"/>
+    <Column Name="GoodsAmt" DataType="System.Decimal"/>
+    <Column Name="UsePosition" DataType="System.String"/>
+    <Column Name="OutMan" DataType="System.String"/>
+    <Column Name="UseMan" DataType="System.String"/>
+    <Column Name="OutStockDate" DataType="System.DateTime"/>
+  </TableDataSource>
+  <TableDataSource Name="Receipt" ReferenceName="Data.Receipt" DataType="System.Int32" Enabled="true">
+    <Column Name="ReceiptID" DataType="System.Int32"/>
+    <Column Name="ReceiptDate" DataType="System.DateTime"/>
+    <Column Name="ReceiptNum" DataType="System.String"/>
+    <Column Name="ReceiptType" DataType="System.Int32"/>
+    <Column Name="ReceiptBillAmt" DataType="System.Decimal"/>
+    <Column Name="ReceiptDiscAmt" DataType="System.Decimal"/>
+    <Column Name="Remark" DataType="System.String"/>
+    <Column Name="CompanyID" DataType="System.Int32"/>
+    <Column Name="WareHouseID" DataType="System.Int32"/>
+    <Column Name="ProjectID" DataType="System.Int32"/>
+    <Column Name="PurchName" DataType="System.String"/>
+    <Column Name="ReceiverName" DataType="System.String"/>
+    <Column Name="BillCycle" DataType="System.String"/>
+    <Column Name="RecordStatus" DataType="System.String"/>
+  </TableDataSource>
+  <TableDataSource Name="ReceiptItems" ReferenceName="Data.ReceiptItems" DataType="System.Int32" Enabled="true">
+    <Column Name="ItemsID" DataType="System.Int32"/>
+    <Column Name="ReceiptID" DataType="System.Int32"/>
+    <Column Name="GoodsID" DataType="System.Int32"/>
+    <Column Name="GoodsName" DataType="System.String"/>
+    <Column Name="GoodsSpec" DataType="System.String"/>
+    <Column Name="GoodsUnit" DataType="System.String"/>
+    <Column Name="GoodsQty" DataType="System.Decimal"/>
+    <Column Name="GoodsPrc" DataType="System.Decimal"/>
+    <Column Name="GoodsYF" DataType="System.Decimal"/>
+    <Column Name="GoodsAmt" DataType="System.Decimal"/>
+    <Column Name="UsePosition" DataType="System.String"/>
+    <Column Name="GoodsPlan" DataType="System.String"/>
+    <Column Name="GoodsPlanNo" DataType="System.String"/>
+    <Column Name="PurchName" DataType="System.String"/>
+    <Column Name="ReceiverName" DataType="System.String"/>
+    <Column Name="ReceiptDate" DataType="System.DateTime"/>
+  </TableDataSource>
+  <TableDataSource Name="Projects" ReferenceName="Data.Projects" DataType="System.Int32" Enabled="true">
+    <Column Name="ProjectID" DataType="System.Int32"/>
+    <Column Name="ProjectName" DataType="System.String"/>
+    <Column Name="ProjectAbstract" DataType="System.String"/>
+    <Column Name="ProjectContractor" DataType="System.String"/>
+    <Column Name="ProjectDeveloper" DataType="System.String"/>
+  </TableDataSource>
+  <TableDataSource Name="WareHouseStock" ReferenceName="Data.WareHouseStock" DataType="System.Int32" Enabled="true">
+    <Column Name="GoodsID" DataType="System.Int32"/>
+    <Column Name="WareHouseID" DataType="System.Int32"/>
+    <Column Name="LastPrice" DataType="System.Decimal"/>
+    <Column Name="Number" DataType="System.Decimal"/>
+    <Column Name="Price" DataType="System.Decimal"/>
+    <Column Name="Amount" DataType="System.Decimal"/>
+  </TableDataSource>
+  <TableDataSource Name="WareHouses" ReferenceName="Data.WareHouses" DataType="System.Int32" Enabled="true">
+    <Column Name="WareHouseID" DataType="System.Int32"/>
+    <Column Name="WareHouseName" DataType="System.String" PropName=" DataType="/>
+  </TableDataSource>
+  <TableDataSource Name="Stock" ReferenceName="Data.Stock" DataType="System.Int32" Enabled="true">
+    <Column Name="GoodsID" DataType="System.Int32"/>
+    <Column Name="GoodsName" DataType="System.String"/>
+    <Column Name="GoodsSpec" DataType="System.String"/>
+    <Column Name="GoodsUnit" DataType="System.String"/>
+    <Column Name="GoodsTypeID" DataType="System.Int32"/>
+    <Column Name="LastQtyIn" DataType="System.Decimal"/>
+    <Column Name="LastAmtIn" DataType="System.Decimal"/>
+    <Column Name="LastQtyOut" DataType="System.Decimal"/>
+    <Column Name="LastAmtOut" DataType="System.Decimal"/>
+    <Column Name="ThisQtyIn" DataType="System.Decimal"/>
+    <Column Name="ThisAmtIn" DataType="System.Decimal"/>
+    <Column Name="ThisQtyOut" DataType="System.Decimal"/>
+    <Column Name="ThisAmtOut" DataType="System.Decimal"/>
+    <Column Name="LastQty" DataType="System.Decimal"/>
+    <Column Name="LastAmt" DataType="System.Decimal"/>
+    <Column Name="EndQty" DataType="System.Decimal"/>
+    <Column Name="EndAmt" DataType="System.Decimal"/>
+  </TableDataSource>
+  <TableDataSource Name="LeaseAccount" ReferenceName="Data.LeaseAccount" DataType="System.Int32" Enabled="true">
+    <Column Name="BillID" DataType="System.Int32"/>
+    <Column Name="ProjectID" DataType="System.Int32"/>
+    <Column Name="ProjectName" DataType="System.String"/>
+    <Column Name="CompanyID" DataType="System.Int32"/>
+    <Column Name="CompanyName" DataType="System.String"/>
+    <Column Name="CalMethod" DataType="System.String"/>
+    <Column Name="BillAmt" DataType="System.Decimal"/>
+    <Column Name="IncludeSDate" DataType="System.Int32"/>
+    <Column Name="IncludeEDate" DataType="System.Int32"/>
+    <Column Name="SDate" DataType="System.DateTime"/>
+    <Column Name="EDate" DataType="System.DateTime"/>
+    <Column Name="BillCycle" DataType="System.String"/>
+    <Column Name="Abstract" DataType="System.String"/>
+  </TableDataSource>
+  <TableDataSource Name="LeaseAccountList" ReferenceName="Data.LeaseAccountList" DataType="System.Int32" Enabled="true">
+    <Column Name="ListID" DataType="System.Int32"/>
+    <Column Name="BillID" DataType="System.Int32"/>
+    <Column Name="SNumber" DataType="System.Int32"/>
+    <Column Name="Abstract" DataType="System.String"/>
+    <Column Name="SDate" DataType="System.DateTime"/>
+    <Column Name="EDate" DataType="System.DateTime"/>
+    <Column Name="LeaseUnit" DataType="System.String"/>
+    <Column Name="LeaseQuality" DataType="System.Decimal"/>
+    <Column Name="LeasePrice" DataType="System.Decimal"/>
+    <Column Name="LeaseDays" DataType="System.Int32"/>
+    <Column Name="LeaseAmt" DataType="System.Decimal"/>
+    <Column Name="LoadingUnit" DataType="System.String"/>
+    <Column Name="LoadingFactor" DataType="System.Decimal"/>
+    <Column Name="LoadingQuality" DataType="System.Decimal"/>
+    <Column Name="LoadingPrice" DataType="System.Decimal"/>
+    <Column Name="LoadingAmt" DataType="System.Decimal"/>
+    <Column Name="RepairUnit" DataType="System.String"/>
+    <Column Name="RepairFactor" DataType="System.Decimal"/>
+    <Column Name="RepairQuality" DataType="System.Decimal"/>
+    <Column Name="RepairPrice" DataType="System.Decimal"/>
+    <Column Name="RepairAmt" DataType="System.Decimal"/>
+    <Column Name="OtherUnit" DataType="System.String"/>
+    <Column Name="OtherQuality" DataType="System.Decimal"/>
+    <Column Name="OtherPrice" DataType="System.Decimal"/>
+    <Column Name="OtherAmt" DataType="System.Decimal"/>
+  </TableDataSource>
+  <TableDataSource Name="LeaseAccountLeft" ReferenceName="Data.LeaseAccountLeft" DataType="System.Int32" Enabled="true">
+    <Column Name="AleftID" DataType="System.Int32"/>
+    <Column Name="HTID" DataType="System.Int32"/>
+    <Column Name="ItemsID" DataType="System.Int32"/>
+    <Column Name="QualityLeft" DataType="System.Decimal"/>
+    <Column Name="LastBillCycle" DataType="System.String"/>
+    <Column Name="LastEDate" DataType="System.DateTime"/>
+  </TableDataSource>
+  <TableDataSource Name="LeaseHT" ReferenceName="Data.LeaseHT" DataType="System.Int32" Enabled="true">
+    <Column Name="HTID" DataType="System.Int32"/>
+    <Column Name="HTNumber" DataType="System.String"/>
+    <Column Name="CompanyID" DataType="System.Int32"/>
+    <Column Name="ProjectID" DataType="System.Int32"/>
+    <Column Name="HTName" DataType="System.String"/>
+    <Column Name="IncludeSDate" DataType="System.Int32"/>
+    <Column Name="IncludeEDate" DataType="System.Int32"/>
+  </TableDataSource>
+  <TableDataSource Name="LeaseItems" ReferenceName="Data.LeaseItems" DataType="System.Int32" Enabled="true">
+    <Column Name="ItemsID" DataType="System.Int32"/>
+    <Column Name="HTID" DataType="System.Int32"/>
+    <Column Name="MName" DataType="System.String"/>
+    <Column Name="LeaseClass" DataType="System.Int32"/>
+    <Column Name="LeaseUnit" DataType="System.String"/>
+    <Column Name="LeasePrice" DataType="System.Decimal"/>
+    <Column Name="LoadingUnit" DataType="System.String"/>
+    <Column Name="LoadingFactor" DataType="System.Decimal"/>
+    <Column Name="LoadingPrice" DataType="System.Decimal"/>
+    <Column Name="RepairUnit" DataType="System.String"/>
+    <Column Name="RepairFactor" DataType="System.Decimal"/>
+    <Column Name="RepairPrice" DataType="System.Decimal"/>
+    <Column Name="BalanceDate" DataType="System.DateTime"/>
+    <Column Name="CurLeaseQuality" DataType="System.Decimal"/>
+  </TableDataSource>
+  <Relation Name="GoodsType_ReceiptItems" ParentDataSource="GoodsType" ChildDataSource="ReceiptItems" ParentColumns="GoodsTypeID" ChildColumns="GoodsID" Enabled="true"/>
+  <Total Name="Total1" Expression="[ReceiptItems.GoodsAmt]" Evaluator="Data2"/>
+  <Total Name="Total2" Expression="[ReceiptItems.GoodsAmt]" Evaluator="Data1"/>
+</Dictionary>

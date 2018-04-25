@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/30/2016 23:03:04" ReportInfo.Modified="10/02/2016 10:10:14" ReportInfo.CreatorVersion="2013.2.5.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    private string CmycurD(decimal num)
+    {
+      string str1 = &quot;零壹贰叁肆伍陆柒捌玖&quot;;            //0-9所对应的汉字
+      string str2 = &quot;万仟佰拾亿仟佰拾万仟佰拾元角分&quot;; //数字位所对应的汉字
+      string str3 = &quot;&quot;;    //从原num值中取出的值
+      string str4 = &quot;&quot;;    //数字的字符串形式
+      string str5 = &quot;&quot;;  //人民币大写金额形式
+      int i;    //循环变量
+      int j;    //num的值乘以100的字符串长度
+      string ch1 = &quot;&quot;;    //数字的汉语读法
+      string ch2 = &quot;&quot;;    //数字位的汉字读法
+      int nzero = 0;  //用来计算连续的零值是几个
+      int temp;            //从原num值中取出的值
+
+      num = Math.Round(Math.Abs(num), 2);    //将num取绝对值并四舍五入取2位小数
+      str4 = ((long)(num * 100)).ToString();        //将num乘100并转换成字符串形式
+      j = str4.Length;      //找出最高位
+      if (j &gt; 15) { return &quot;溢出&quot;; }
+      str2 = str2.Substring(15 - j);   //取出对应位数的str2的值。如：200.55,j为5所以str2=佰拾元角分
+
+      //循环取出每一位需要转换的值
+      for (i = 0; i &lt; j; i++)
+      {
+        str3 = str4.Substring(i, 1);          //取出需转换的某一位的值
+        temp = Convert.ToInt32(str3);      //转换为数字
+        if (i != (j - 3) &amp;&amp; i != (j - 7) &amp;&amp; i != (j - 11) &amp;&amp; i != (j - 15))
+        {
+          //当所取位数不为元、万、亿、万亿上的数字时
+          if (str3 == &quot;0&quot;)
+          {
+            ch1 = &quot;&quot;;
+            ch2 = &quot;&quot;;
+            nzero = nzero + 1;
+          }
+          else
+          {
+            if (str3 != &quot;0&quot; &amp;&amp; nzero != 0)
+            {
+              ch1 = &quot;零&quot; + str1.Substring(temp * 1, 1);
+              ch2 = str2.Substring(i, 1);
+              nzero = 0;
+            }
+            else
+            {
+              ch1 = str1.Substring(temp * 1, 1);
+              ch2 = str2.Substring(i, 1);
+              nzero = 0;
+            }
+          }
+        }
+        else
+        {
+          //该位是万亿，亿，万，元位等关键位
+          if (str3 != &quot;0&quot; &amp;&amp; nzero != 0)
+          {
+            ch1 = &quot;零&quot; + str1.Substring(temp * 1, 1);
+            ch2 = str2.Substring(i, 1);
+            nzero = 0;
+          }
+          else
+          {
+            if (str3 != &quot;0&quot; &amp;&amp; nzero == 0)
+            {
+              ch1 = str1.Substring(temp * 1, 1);
+              ch2 = str2.Substring(i, 1);
+              nzero = 0;
+            }
+            else
+            {
+              if (str3 == &quot;0&quot; &amp;&amp; nzero &gt;= 3)
+              {
+                ch1 = &quot;&quot;;
+                ch2 = &quot;&quot;;
+                nzero = nzero + 1;
+              }
+              else
+              {
+                if (j &gt;= 11)
+                {
+                  ch1 = &quot;&quot;;
+                  nzero = nzero + 1;
+                }
+                else
+                {
+                  ch1 = &quot;&quot;;
+                  ch2 = str2.Substring(i, 1);
+                  nzero = nzero + 1;
+                }
+              }
+            }
+          }
+        }
+        if (i == (j - 11) || i == (j - 3))
+        {
+          //如果该位是亿位或元位，则必须写上
+          ch2 = str2.Substring(i, 1);
+        }
+        str5 = str5 + ch1 + ch2;
+
+        if (i == j - 1 &amp;&amp; str3 == &quot;0&quot;)
+        {
+          //最后一位（分）为0时，加上“整”
+          str5 = str5 + '整';
+        }
+      }
+      if (num == 0)
+      {
+        str5 = &quot;零元整&quot;;
+      }
+      return str5;
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="AccountBill" ReferenceName="Data.AccountBill" DataType="System.Int32" Enabled="true">
+      <Column Name="BillNo" DataType="System.Int32"/>
+      <Column Name="ProjectID" DataType="System.Int32"/>
+      <Column Name="ProjectName" DataType="System.String"/>
+      <Column Name="CompanyID" DataType="System.Int32"/>
+      <Column Name="CompanyName" DataType="System.String"/>
+      <Column Name="MoneyTypeID" DataType="System.Int32"/>
+      <Column Name="MoneyTypeName" DataType="System.String"/>
+      <Column Name="BillType" DataType="System.Int32"/>
+      <Column Name="BillMemo" DataType="System.String"/>
+      <Column Name="BillYS" DataType="System.Decimal"/>
+      <Column Name="BillSS" DataType="System.Decimal"/>
+      <Column Name="BillYF" DataType="System.Decimal"/>
+      <Column Name="BillSF" DataType="System.Decimal"/>
+      <Column Name="BillDate" DataType="System.DateTime"/>
+      <Column Name="BillCycle" DataType="System.String"/>
+      <Column Name="BillStatus" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="Goods" ReferenceName="Data.Goods" DataType="System.Int32" Enabled="true">
+      <Column Name="GoodsID" DataType="System.Int32"/>
+      <Column Name="GoodsName" DataType="System.String"/>
+      <Column Name="GoodsNamePY" DataType="System.String"/>
+      <Column Name="GoodsTypeID" DataType="System.Int32"/>
+      <Column Name="GoodsTypeName" DataType="System.String"/>
+      <Column Name="GoodsUnit" DataType="System.String"/>
+      <Column Name="GoodsSpec" DataType="System.String"/>
+      <Column Name="GoodsPrice" DataType="System.Decimal"/>
+      <Column Name="LimitLow" DataType="System.Decimal"/>
+      <Column Name="LimitUp" DataType="System.Decimal"/>
+    </TableDataSource>
+    <TableDataSource Name="Companies" ReferenceName="Data.Companies" DataType="System.Int32" Enabled="true">
+      <Column Name="CompanyID" DataType="System.Int32"/>
+      <Column Name="CompanyName" DataType="System.String"/>
+      <Column Name="CompanyNamePY" DataType="System.String"/>
+      <Column Name="CompanyType" DataType="System.Int32"/>
+      <Column Name="LinkDetail" DataType="System.String"/>
+      <Column Name="Remark" DataType="System.String"/>
+      <Column Name="IsSys" DataType="System.Int32"/>
+      <Column Name="IsStop" DataType="System.Int32"/>
+      <Column Name="CompanySKName" DataType="System.String"/>
+      <Column Name="CompanySKBank" DataType="System.String"/>
+      <Column Name="CompanySKAccount" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="OutStock" ReferenceName="Data.OutStock" DataType="System.Int32" Enabled="true">
+      <Column Name="OutStockID" DataType="System.Int32"/>
+      <Column Name="OutStockDate" DataType="System.DateTime"/>
+      <Column Name="OutStockType" DataType="System.Int32"/>
+      <Column Name="OutBillAmt" DataType="System.Decimal"/>
+      <Column Name="OutBillRemark" DataType="System.String"/>
+      <Column Name="ProjectID" DataType="System.Int32"/>
+      <Column Name="CompanyID" DataType="System.Int32"/>
+      <Column Name="WareHouseID" DataType="System.Int32"/>
+      <Column Name="BillCycle" DataType="System.String"/>
+      <Column Name="RecordStatus" DataType="System.String"/>
+      <Column Name="OutMan" DataType="System.String"/>
+      <Column Name="UseMan" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="OutStockItems" ReferenceName="Data.OutStockItems" DataType="System.Int32" Enabled="true">
+      <Column Name="ItemsID" DataType="System.Int32"/>
+      <Column Name="OutStockID" DataType="System.Int32"/>
+      <Column Name="GoodsID" DataType="System.Int32"/>
+      <Column Name="GoodsName" DataType="System.String"/>
+      <Column Name="GoodsSpec" DataType="System.String"/>
+      <Column Name="GoodsUnit" DataType="System.String"/>
+      <Column Name="GoodsQty" DataType="System.Decimal"/>
+      <Column Name="GoodsPrc" DataType="System.Decimal"/>
+      <Column Name="GoodsAmt" DataType="System.Decimal"/>
+      <Column Name="UsePosition" DataType="System.String"/>
+      <Column Name="OutMan" DataType="System.String"/>
+      <Column Name="UseMan" DataType="System.String"/>
+      <Column Name="OutStockDate" DataType="System.DateTime"/>
+    </TableDataSource>
+    <TableDataSource Name="Receipt" ReferenceName="Data.Receipt" DataType="System.Int32" Enabled="true">
+      <Column Name="ReceiptID" DataType="System.Int32"/>
+      <Column Name="ReceiptDate" DataType="System.DateTime"/>
+      <Column Name="ReceiptNum" DataType="System.String"/>
+      <Column Name="ReceiptType" DataType="System.Int32"/>
+      <Column Name="ReceiptBillAmt" DataType="System.Decimal"/>
+      <Column Name="ReceiptDiscAmt" DataType="System.Decimal"/>
+      <Column Name="Remark" DataType="System.String"/>
+      <Column Name="CompanyID" DataType="System.Int32"/>
+      <Column Name="WareHouseID" DataType="System.Int32"/>
+      <Column Name="ProjectID" DataType="System.Int32"/>
+      <Column Name="PurchName" DataType="System.String"/>
+      <Column Name="ReceiverName" DataType="System.String"/>
+      <Column Name="BillCycle" DataType="System.String"/>
+      <Column Name="RecordStatus" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="ReceiptItems" ReferenceName="Data.ReceiptItems" DataType="System.Int32" Enabled="true">
+      <Column Name="ItemsID" DataType="System.Int32"/>
+      <Column Name="ReceiptID" DataType="System.Int32"/>
+      <Column Name="GoodsID" DataType="System.Int32"/>
+      <Column Name="GoodsName" DataType="System.String"/>
+      <Column Name="GoodsSpec" DataType="System.String"/>
+      <Column Name="GoodsUnit" DataType="System.String"/>
+      <Column Name="GoodsQty" DataType="System.Decimal"/>
+      <Column Name="GoodsPrc" DataType="System.Decimal"/>
+      <Column Name="GoodsYF" DataType="System.Decimal"/>
+      <Column Name="GoodsAmt" DataType="System.Decimal"/>
+      <Column Name="UsePosition" DataType="System.String"/>
+      <Column Name="GoodsPlan" DataType="System.String"/>
+      <Column Name="GoodsPlanNo" DataType="System.String"/>
+      <Column Name="PurchName" DataType="System.String"/>
+      <Column Name="ReceiverName" DataType="System.String"/>
+      <Column Name="ReceiptDate" DataType="System.DateTime"/>
+    </TableDataSource>
+    <TableDataSource Name="Projects" ReferenceName="Data.Projects" DataType="System.Int32" Enabled="true">
+      <Column Name="ProjectID" DataType="System.Int32"/>
+      <Column Name="ProjectName" DataType="System.String"/>
+      <Column Name="ProjectAbstract" DataType="System.String"/>
+      <Column Name="ProjectContractor" DataType="System.String"/>
+      <Column Name="ProjectDeveloper" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="WareHouseStock" ReferenceName="Data.WareHouseStock" DataType="System.Int32" Enabled="true">
+      <Column Name="GoodsID" DataType="System.Int32"/>
+      <Column Name="WareHouseID" DataType="System.Int32"/>
+      <Column Name="LastPrice" DataType="System.Decimal"/>
+      <Column Name="Number" DataType="System.Decimal"/>
+      <Column Name="Price" DataType="System.Decimal"/>
+      <Column Name="Amount" DataType="System.Decimal"/>
+    </TableDataSource>
+    <TableDataSource Name="WareHouses" ReferenceName="Data.WareHouses" DataType="System.Int32" Enabled="true">
+      <Column Name="WareHouseID" DataType="System.Int32"/>
+      <Column Name="WareHouseName" DataType="System.String" PropName=" DataType="/>
+    </TableDataSource>
+    <Total Name="OutStockTotal" Expression="[OutStockItems.GoodsAmt]" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" FirstPageSource="263" OtherPagesSource="263">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="151.43">
+      <TextObject Name="Text1" Left="189" Top="18.9" Width="642.6" Height="28.35" Text="【[Companies.CompanyName]】领用结算表" HorzAlign="Center" VertAlign="Center" Font="宋体, 16pt, style=Bold"/>
+      <TextObject Name="Text2" Left="831.6" Top="28.35" Width="160.65" Height="18.9" Text="（结算周期：[OutStock.BillCycle]）" VertAlign="Center" Font="宋体, 9pt, style=Bold, Italic"/>
+      <TableObject Name="Table1" Top="90.95" Width="1048.96" Height="60.48" Border.Lines="All">
+        <TableColumn Name="Column1" Width="262.24"/>
+        <TableColumn Name="Column2" Width="262.24"/>
+        <TableColumn Name="Column3" Width="262.24"/>
+        <TableColumn Name="Column4" Width="262.24"/>
+        <TableRow Name="Row1" Height="30.24">
+          <TableCell Name="Cell1" Border.Lines="All" Text="项目名称：[Projects.ProjectName]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="供方：[Projects.ProjectContractor]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell3" Border.Lines="All" Text="领用收款人：[Companies.CompanySKName]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="领用开户行：[Companies.CompanySKBank]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="30.24">
+          <TableCell Name="Cell6" Border.Lines="All" Text="业主单位：[Projects.ProjectDeveloper]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="领用方：[Companies.CompanyName]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell8" Border.Lines="All" Text="领用银行帐号：[Companies.CompanySKAccount]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="领用联系信息：[Companies.LinkDetail]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="155.43" Width="1047.06" Height="30.35" Guides="37.8,9.45">
+      <TextObject Name="Text28" Left="378" Top="0.11" Width="141.75" Height="30.24" Border.Lines="All" Text="规格型号" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text26" Top="0.11" Width="37.8" Height="30.24" Border.Lines="All" Text="序号" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text27" Left="113.4" Top="0.11" Width="264.6" Height="30.24" Border.Lines="All" Text="货品名称" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text29" Left="519.75" Top="0.11" Width="37.8" Height="30.24" Border.Lines="All" Text="单位" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text30" Left="557.55" Top="0.11" Width="75.6" Height="30.24" Border.Lines="All" Text="数量" Format="Currency" Format.UseLocale="true" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 9pt, style=Bold" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text31" Left="633.15" Top="0.11" Width="75.6" Height="30.24" Border.Lines="All" Text="单价" Format="Currency" Format.UseLocale="true" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 9pt, style=Bold" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text33" Left="708.75" Top="0.11" Width="94.5" Height="30.24" Border.Lines="All" Text="金额" Format="Currency" Format.UseLocale="true" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 9pt, style=Bold" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text34" Left="803.25" Top="0.11" Width="94.5" Height="30.24" Border.Lines="All" Text="使用部位" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text37" Left="897.75" Top="0.11" Width="75.6" Height="30.24" Border.Lines="All" Text="领用人" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text38" Left="973.35" Top="0.11" Width="75.6" Height="30.24" Border.Lines="All" Text="出库人" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+      <TextObject Name="Text39" Left="37.8" Top="0.11" Width="75.6" Height="30.24" Border.Lines="All" Text="日期" Format="Custom" Format.Format="yyMMdd" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="189.78" Width="1047.06" Height="26.46" Guides="9.45" DataSource="OutStockItems">
+      <TextObject Name="Text3" Width="37.8" Height="26.46" Border.Lines="All" Text="[AbsRow#]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text5" Left="113.4" Width="264.6" Height="26.46" Border.Lines="All" Text="[OutStockItems.GoodsName]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text7" Left="378" Width="141.75" Height="26.46" Border.Lines="All" Text="[OutStockItems.GoodsSpec]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text9" Left="519.75" Width="37.8" Height="26.46" Border.Lines="All" Text="[OutStockItems.GoodsUnit]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text11" Left="557.55" Width="75.6" Height="26.46" Border.Lines="All" Text="[OutStockItems.GoodsQty]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 9pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text13" Left="633.15" Width="75.6" Height="26.46" Border.Lines="All" Text="[OutStockItems.GoodsPrc]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 9pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text17" Left="708.75" Width="94.5" Height="26.46" Border.Lines="All" Text="[OutStockItems.GoodsAmt]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 9pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text18" Left="803.25" Width="94.5" Height="26.46" Border.Lines="All" Text="[OutStockItems.UsePosition]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text21" Left="897.75" Width="75.6" Height="26.46" Border.Lines="All" Text="[OutStockItems.UseMan]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text22" Left="973.35" Width="75.6" Height="26.46" Border.Lines="All" Text="[OutStockItems.OutMan]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text23" Left="37.8" Width="75.6" Height="26.46" Border.Lines="All" Text="[OutStockItems.OutStockDate]" Format="Custom" Format.Format="yyMMdd" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <DataFooterBand Name="DataFooter1" Top="220.24" Width="1047.06" Height="112.55" Guides="56.7,160.65">
+        <TableObject Name="Table2" Top="37.8" Width="1048.96" Height="74.75" Border.Lines="All">
+          <TableColumn Name="Column5" Width="262.24"/>
+          <TableColumn Name="Column6" Width="262.24"/>
+          <TableColumn Name="Column7" Width="262.24"/>
+          <TableColumn Name="Column8" Width="262.24"/>
+          <TableRow Name="Row3" Height="74.75">
+            <TableCell Name="Cell10" Border.Lines="All" Text="公司分管(签字):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;                          年    月    日" Padding="2, 3, 2, 3" Font="宋体, 9pt"/>
+            <TableCell Name="Cell11" Border.Lines="All" Text="材料管理(签字):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;                          年    月    日" Padding="2, 3, 2, 3" Font="宋体, 9pt"/>
+            <TableCell Name="Cell12" Border.Lines="All" Text="库管(签字):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;                          年    月    日" Padding="2, 3, 2, 3" Font="宋体, 9pt"/>
+            <TableCell Name="Cell13" Border.Lines="All" Text="领用方确认(签字):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;                          年    月    日" Padding="2, 3, 2, 3" Font="宋体, 9pt"/>
+          </TableRow>
+        </TableObject>
+        <TableObject Name="Table3" Width="1048.94" Height="37.8" Border.Lines="All">
+          <TableColumn Name="Column9" Width="94.75"/>
+          <TableColumn Name="Column10" Width="499.94"/>
+          <TableColumn Name="Column11" Width="151.46"/>
+          <TableColumn Name="Column12" Width="302.79"/>
+          <TableRow Name="Row4" Height="37.8">
+            <TableCell Name="Cell14" Text="合计：" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+            <TableCell Name="Cell15" Text="大写金额：[CmycurD([OutStockTotal])]" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+            <TableCell Name="Cell16" Text="[OutStockTotal]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Center" Font="宋体, 9pt, style=Bold"/>
+            <TableCell Name="Cell17" Font="宋体, 9pt"/>
+          </TableRow>
+        </TableObject>
+      </DataFooterBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="336.79" Width="1047.06" Height="37.8">
+      <TextObject Name="Text25" Left="472.5" Top="9.45" Width="141.75" Height="18.9" Text="第[Page#]页/共[TotalPages#]页" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

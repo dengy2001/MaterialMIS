@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="LeaseAccountList" table="LeaseAccountList">
+		<id name="ListID" column="ListID" >
+			<generator class="increment" />
+		</id>
+		<property name="BillID" column="BillID" />
+		<property name="SNumber" column="SNumber"/>
+		<property name="ItemsID" column="ItemsID"/>
+		<property name="ItemsName" column="ItemsName"/>
+		<property name="LeaseClass" column="LeaseClass"/>
+		<property name="Abstract" column="Abstract"/>
+		<property name="SDate" column="SDate"/>
+		<property name="EDate" column="EDate"/>
+		<property name="LeaseUnit" column="LeaseUnit"/>
+		<property name="LeaseQuality" column="LeaseQuality"/>
+		<property name="LeasePrice" column="LeasePrice"/>
+		<property name="LeaseDays" column="LeaseDays"/>
+		<property name="LeaseAmt" column="LeaseAmt"/>
+		<property name="LoadingUnit" column="LoadingUnit"/>
+		<property name="LoadingFactor" column="LoadingFactor"/>
+		<property name="LoadingQuality" column="LoadingQuality"/>
+		<property name="LoadingPrice" column="LoadingPrice"/>
+		<property name="LoadingAmt" column="LoadingAmt"/>
+	<property name="RepairUnit" column="RepairUnit"/>
+	<property name="RepairFactor" column="RepairFactor"/>
+	<property name="RepairQuality" column="RepairQuality"/>
+	<property name="RepairPrice" column="RepairPrice"/>
+	<property name="RepairAmt" column="RepairAmt"/>
+	<property name="OtherUnit" column="OtherUnit"/>
+	<property name="OtherQuality" column="OtherQuality"/>
+	<property name="OtherPrice" column="OtherPrice"/>
+	<property name="OtherAmt" column="OtherAmt"/>
+	
+		
+	
+	</class>
+</hibernate-mapping>

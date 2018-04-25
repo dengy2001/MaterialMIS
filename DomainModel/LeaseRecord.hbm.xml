@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="LeaseRecord" table="LeaseRecord">
+		<id name="RID" column="RID" >
+			<generator class="increment" />
+		</id>
+		<property name="HTID" column="HTID" />
+		<property name="ItemsID" column="ItemsID"/>
+		<property name="Quality" column="Quality"/>
+		<property name="BalanceDate" column="BalanceDate"/>
+		<property name="LeaseDate" column="LeaseDate"/>
+		<property name="LeaseStatus" column="LeaseStatus"/>
+		<property name="Abstract" column="Abstract"/>
+		<property name="Handler" column="Handler"/>
+	
+	</class>
+</hibernate-mapping>

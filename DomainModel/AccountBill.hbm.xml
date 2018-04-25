@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="AccountBill" table="AccountBill">
+		<id name="BillNo" column="BillNo" >
+			<generator class="increment" />
+		</id>
+		<property name="ProjectID" column="ProjectID"   />
+		<property name="ProjectName" column="ProjectName"   />
+		<property name="CompanyID" column="CompanyID"   />
+		<property name="CompanyName" column="CompanyName"   />
+		<property name="MoneyTypeID" column="MoneyTypeID"  />
+		<property name="MoneyTypeName" column="MoneyTypeName"  />
+		<property name="BillType" column="BillType"   />
+		<property name="BillMemo" column="BillMemo"  />
+		<property name="BillYS" column="BillYS" />
+		<property name="BillSS" column="BillSS"/>
+		<property name="BillYF" column="BillYF" />
+		<property name="BillSF" column="BillSF"/>
+		<property name="BillDate" column="BillDate"/>
+		<property name="BillCycle" column="BillCycle"/>
+		<property name="BillStatus" column="BillStatus"/>
+	
+	</class>
+</hibernate-mapping>

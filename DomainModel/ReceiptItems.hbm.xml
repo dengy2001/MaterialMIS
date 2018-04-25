@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="DomainModel" assembly="DomainModel">
+	<class name="ReceiptItems" table="ReceiptItems">
+		<id name="ItemsID" column="ItemsID" >
+			<generator class="increment" />
+		</id>
+		<property name="ReceiptID" column="ReceiptID" />
+		<property name="GoodsID" column="GoodsID"/>
+		<property name="GoodsName" column="GoodsName"/>
+		<property name="GoodsSpec" column="GoodsSpec"/>
+		<property name="MoreSpec" column="MoreSpec"/>
+		<property name="GoodsUnit" column="GoodsUnit"/>
+		<property name="GoodsQty" column="GoodsQty"/>
+		<property name="GoodsPrc" column="GoodsPrc"/>
+		<property name="GoodsYF" column="GoodsYF"/>
+		<property name="GoodsAmt" column="GoodsAmt"/>
+		<property name="UsePosition" column="UsePosition"/>
+		<property name="GoodsPlan" column="GoodsPlan"/>
+		<property name="GoodsPlanNo" column="GoodsPlanNo"/>
+		<property name="GoodsTaxRate" column="GoodsTaxRate"/>
+		<property name="GoodsNoTaxPrice" column="GoodsNoTaxPrice"/>
+	</class>
+</hibernate-mapping>
